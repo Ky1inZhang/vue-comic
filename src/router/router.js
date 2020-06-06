@@ -25,7 +25,8 @@ export default [
     props: true
   },
   {
-    path: '/p/:comicId/:detailId',
+    // path: '/p/:comicId/:detailId',
+    path: '/p/:comicId/:detailId/:index',
     component: () => import('@/views/Detail.vue'),
     props: true
   },

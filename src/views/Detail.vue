@@ -25,6 +25,9 @@ export default {
     },
     detailId: {
       type: String
+    },
+    index: {
+      type: String
     }
   },
   data () {
@@ -32,12 +35,14 @@ export default {
       hostUrl: '',
       imgs: [],
       noimg: '',
-      // pre: `/p/${this.$route.params.comicId}/${Number(this.$route.params.detailId) - 1}`,
-      pre: `/p/${this.comicId}/${Number(this.detailId) - 1}`,
-      next: `/p/${this.comicId}/${Number(this.detailId) + 1}`
+      pre: '',
+      next: ''
     }
   },
   mounted () {
+    const titles = JSON.parse(sessionStorage.getItem('titles'))
+    this.pre = `/p/${this.comicId + titles[this.index].pre}/${Number(this.index) - 1}`
+    this.next = `/p/${this.comicId + titles[this.index].next}/${Number(this.index) + 1}`
     this.getData()
   },
   methods: {
@@ -71,7 +76,7 @@ export default {
       })
       var decryptedStr = decrypt.toString(CryptoJs.enc.Utf8)
       chapterImages = JSON.parse(decryptedStr.toString())
-      if (chapterImages.length > 2) chapterImages.splice(chapterImages.length - 2, 2)
+      // if (chapterImages.length > 2) chapterImages.splice(chapterImages.length - 2, 2)
       if (this.$log) console.log(chapterImages)
       if (!this.hostUrl && !chapterImages[0].includes('mhimg.eshanyao.com') && chapterImages[0].includes('images.dmzj.com')) {
         this.hostUrl = 'https://img01.eshanyao.com/showImage.php?url='
@@ -79,7 +84,6 @@ export default {
       }
       // this.imgs = this.imgs.concat(chapterImages)
       this.imgs = chapterImages
-      if (this.$log) console.log(this.imgs)
       if (this.imgs.length === 0) this.noimg = 'https://tvax1.sinaimg.cn/large/c167ccbfgy1gfczs5sfg1j20m80df74v.jpg'
     }
   },
