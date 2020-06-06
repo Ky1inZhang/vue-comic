@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+// import store from './store'
 import Axios from 'axios'
 import CryptoJs from 'crypto-js'
 import '@/assets/css/bootstrap.css'
@@ -23,6 +23,6 @@ Vue.prototype.CryptoJs = CryptoJs
 
 new Vue({
   router,
-  store,
+  // store,
   render: h => h(App)
 }).$mount('#app')
