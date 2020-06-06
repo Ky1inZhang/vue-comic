@@ -1,16 +1,3 @@
-
-第二章
-  路由详解（一）————基础
-  1) router-linke和router-view
-  2) 路由配置
-      a. 动态路由
-      b. 嵌套路由
-      c. 命名路由
-      d. 命名视图
-  3) JS操作重定向
-  4）重定向和别名
-
-
 nginx +VUE 解决404 问题
 https://www.jianshu.com/p/989d8bc719c4
 
@@ -31,15 +18,16 @@ nginx 代理模板
         }
 
 vue 基于vue-lazyload图片懒加载、延迟加载
-https://www.jianshu.com/p/4defe2eece42
-vue-lazyload最简实现
-http://www.bpwen.cn/show/2119/9340
+        https://www.jianshu.com/p/4defe2eece42
+        vue-lazyload最简实现
+        http://www.bpwen.cn/show/2119/9340
 
 
-node爬虫  npm install crawler
-https://www.cnblogs.com/boxrice/p/11725893.html  
-简单的cheerio
-https://www.cnblogs.com/xiaxuexiaoab/p/7124956.html
+node爬虫  
+        npm install crawler
+        https://www.cnblogs.com/boxrice/p/11725893.html  
+        简单的cheerio
+        https://www.cnblogs.com/xiaxuexiaoab/p/7124956.html
 
 正则匹配
         匹配两个字符串A与B中间的字符串包含A与B：
@@ -54,7 +42,17 @@ https://www.cnblogs.com/xiaxuexiaoab/p/7124956.html
         表达式: (?<=A).*?(?=B)
 
 ios不显示的bug是由于不支持负向零宽断言
-即(?<=exp)
-var str = 'dsaxc7vbnloia56op-bpo'
-var arr = str.match(/[^a]+(?=b)/ig)
-https://bbs.csdn.net/topics/391815693?page=1
+        即(?<=exp)
+        var str = 'dsaxc7vbnloia56op-bpo'
+        var arr = str.match(/[^a]+(?=b)/ig)
+        https://bbs.csdn.net/topics/391815693?page=1
+
+
+https证书配置    
+        https://blog.csdn.net/blog_zxb/article/details/103735685?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-6    
+        ./certbot-auto certonly --webroot -w /usr/share/nginx/html \
+        --email 947447588@qq.com \
+        -d www.lunc.club
+    
+https nginx 配置    
+        https://www.cnblogs.com/is-possible/p/12524115.html    

@@ -1,17 +1,19 @@
 <template>
   <div id="Detail">
-    <div class="fa-left">
-      <router-link tag="i" class="fa fa-chevron-left" aria-hidden="true" :to='pre' title="上一章"></router-link>
-    </div>
-    <div class="fa-right">
-      <router-link tag="i" class="fa fa-chevron-right" aria-hidden="true" :to="next" title="下一章"></router-link>
-    </div>
-    <div class="fa-fa-home">
-      <router-link tag="i" to='/' class="fa fa-home" aria-hidden="true" title="首页"></router-link>
+    <div class="" v-show="showFlg">
+      <div class="fa-left">
+        <router-link tag="i" class="fa fa-chevron-left" aria-hidden="true" :to='pre' title="上一章"></router-link>
+      </div>
+      <div class="fa-right">
+        <router-link tag="i" class="fa fa-chevron-right" aria-hidden="true" :to="next" title="下一章"></router-link>
+      </div>
+      <div class="fa-fa-home">
+        <router-link tag="i" to='/' class="fa fa-home" aria-hidden="true" title="首页"></router-link>
+      </div>
     </div>
     <img class="noimg" :src="noimg" alt="" srcset="">
     <div class="imgs" v-for="(item,index) in imgs" :key="index">
-      <img class="img-responsive"  v-lazy="hostUrl+item" alt />
+      <img class="img-responsive" @click="show()" v-lazy="hostUrl+item" alt />
     </div>
   </div>
 </template>
@@ -36,7 +38,8 @@ export default {
       imgs: [],
       noimg: '',
       pre: '',
-      next: ''
+      next: '',
+      showFlg: true
     }
   },
   mounted () {
@@ -75,14 +78,18 @@ export default {
       })
       var decryptedStr = decrypt.toString(CryptoJs.enc.Utf8)
       chapterImages = JSON.parse(decryptedStr.toString())
-      // if (chapterImages.length > 2) chapterImages.splice(chapterImages.length - 2, 2)
+      if (chapterImages.length > 2 && chapterImages[0].length !== chapterImages[chapterImages.length - 1].length) chapterImages.splice(chapterImages.length - 2, 2)
       if (!this.hostUrl && !chapterImages[0].includes('mhimg.eshanyao.com') && chapterImages[0].includes('images.dmzj.com')) {
         this.hostUrl = 'https://img01.eshanyao.com/showImage.php?url='
         console.log('use php get url & this.host:' + this.hostUrl)
       }
       // this.imgs = this.imgs.concat(chapterImages)
+      console.log(chapterImages)
       this.imgs = chapterImages
       if (this.imgs.length === 0) this.noimg = 'https://tvax1.sinaimg.cn/large/c167ccbfgy1gfczs5sfg1j20m80df74v.jpg'
+    },
+    show () {
+      this.showFlg = !this.showFlg
     }
   },
   computed: {
