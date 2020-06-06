@@ -94,7 +94,6 @@ export default {
     submitFn (e) {
       // e.target=e.toElement
       var value = $('.search-wrapper').find('.search-input').val()
-      console.log('search-input value ：' + value)
       if (value && (e.target.parentNode.localName === 'button' || e.keyCode === 13)) this.refresh(value)
       // evt.preventDefault()
     }

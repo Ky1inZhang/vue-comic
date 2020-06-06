@@ -50,7 +50,6 @@ export default {
       const url = `${this.HOST}/${this.comicId}/${this.detailId}.html`
       this.$axios.get(url, [])
         .then(res => {
-          console.log('Detail: start')
           const pattern = '[^"]+(?=";var chapterPath)' // 不支持负向零宽断言所以采用这种写法
           const imgsAES = res.data.match(pattern)[0]
           const pattern2 = '[^"]+(?=";var chapterPrice)'
@@ -77,7 +76,6 @@ export default {
       var decryptedStr = decrypt.toString(CryptoJs.enc.Utf8)
       chapterImages = JSON.parse(decryptedStr.toString())
       // if (chapterImages.length > 2) chapterImages.splice(chapterImages.length - 2, 2)
-      if (this.$log) console.log(chapterImages)
       if (!this.hostUrl && !chapterImages[0].includes('mhimg.eshanyao.com') && chapterImages[0].includes('images.dmzj.com')) {
         this.hostUrl = 'https://img01.eshanyao.com/showImage.php?url='
         console.log('use php get url & this.host:' + this.hostUrl)

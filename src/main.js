@@ -20,7 +20,6 @@ Vue.config.productionTip = false
 Vue.prototype.HOST = '/api'
 Vue.prototype.$axios = Axios
 Vue.prototype.CryptoJs = CryptoJs
-Vue.prototype.$log = true
 
 new Vue({
   router,
