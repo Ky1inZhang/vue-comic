@@ -54,6 +54,8 @@ export default {
     // var url = '/r/rank/'
     // var str = '.li_content_dec a img'
     // this.getData(url, str)
+    const loading = document.getElementById('loader-wrapper')
+    if (loading) loading.remove()
   },
   methods: {
     getData (url, str) {
