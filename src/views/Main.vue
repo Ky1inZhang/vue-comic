@@ -36,7 +36,7 @@
   </div>
 </template>
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 import rank from '@/mock/rank'
 import '@/assets/css/search-form.css'
 import cheerio from 'cheerio'
@@ -53,9 +53,6 @@ export default {
   mounted () {
     // var url = '/r/rank/'
     // var str = '.li_content_dec a img'
-    // this.getData(url, str)
-    const loading = document.getElementById('loader-wrapper')
-    if (loading) loading.remove()
   },
   methods: {
     getData (url, str) {
@@ -89,16 +86,18 @@ export default {
     },
     searchToggle (obj, evt) {
       obj = evt.target
+      // eslint-disable-next-line no-undef
       var container = $(obj).closest('.search-wrapper')
       if (!container.hasClass('active')) {
         container.addClass('active')
         evt.preventDefault()
+      // eslint-disable-next-line no-undef
       } else if (container.hasClass('active') && $(obj).closest('.input-holder').length === 0) {
         container.removeClass('active')
       }
     },
     submitFn (e) {
-      // e.target=e.toElement
+      // eslint-disable-next-line no-undef
       var value = $('.search-wrapper').find('.search-input').val()
       if (value && (e.target.parentNode.localName === 'button' || e.keyCode === 13)) this.refresh(value)
       // evt.preventDefault()
