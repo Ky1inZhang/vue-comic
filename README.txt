@@ -47,7 +47,8 @@ ios不显示的bug是由于不支持负向零宽断言
         var arr = str.match(/[^a]+(?=b)/ig)
         https://bbs.csdn.net/topics/391815693?page=1
 
-
+nginx自动配置
+        https://it.baiked.com/tools/nginxconfig.html
 https证书配置    
         https://blog.csdn.net/blog_zxb/article/details/103735685?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-6    
         ./certbot-auto certonly --webroot -w /usr/share/nginx/html \

@@ -37,6 +37,7 @@
 </template>
 <script>
 import $ from 'jquery'
+import rank from '@/mock/rank'
 import '@/assets/css/search-form.css'
 import cheerio from 'cheerio'
 export default {
@@ -46,10 +47,13 @@ export default {
       titles: []
     }
   },
+  beforeMount () {
+    this.titles = rank.rank
+  },
   mounted () {
-    var url = '/r/rank/'
-    var str = '.li_content_dec a img'
-    this.getData(url, str)
+    // var url = '/r/rank/'
+    // var str = '.li_content_dec a img'
+    // this.getData(url, str)
   },
   methods: {
     getData (url, str) {
