@@ -19,7 +19,16 @@
     <div class="container">
       <div class="row">
         <table class="table table-hover table-bordered">
-          <caption class="h2 text-warning text-center" style="text-align: center;caption-side: top;">排行榜</caption>
+          <caption class="h2 text-warning text-center" style="text-align: center;caption-side: top;">
+            <div class="ranks">
+              <span>  排行榜  </span>
+              <router-link class="link"  to='/k/popularity' title="排行榜">人气</router-link>
+              <router-link class="link"  to='/k/click' title="排行榜">点击</router-link>
+              <router-link class="link"  to='/k/subscribe' title="排行榜">订阅</router-link>
+              <router-link class="link"  to='/k/comment' title="排行榜">评论</router-link>
+              <router-link class="link"  to='/k/criticism' title="排行榜">吐槽</router-link>
+            </div>
+          </caption>
           <div class="col-md-12">
             <ul class="titles" v-for="(item,index) in titles" :key="index">
               <div v-if="item.title">
@@ -48,12 +57,30 @@ export default {
       titles: []
     }
   },
+  props: {
+    keywords: {
+      type: String
+    },
+    rankName: {
+      type: String
+    }
+  },
   created () {
-    this.titles = rank.rank
-    // api.getRank().then(res => {}).catch()
-    // var url = '/r/rank/'
-    // var str = '.li_content_dec a img'
-    // this.getData(url, str)
+    var url = ''
+    var str = ''
+    if (this.keywords) {
+      // url  请求地址 path 路由
+      url = '/r/search/?keywords=' + this.keywords
+      str = '.image-link img'
+    } else if (this.rankName) {
+      url = `/r/rank/${this.rankName}/`
+      str = '.li_content_dec a img'
+    }
+    if (url && str) {
+      this.getData(url, str)
+    } else {
+      this.titles = rank.rank
+    }
   },
   mounted () {
   },
@@ -82,10 +109,16 @@ export default {
           console.error(err)
         })
     },
+    toPath (path) {
+      this.$router.push({
+        path: `${path}`
+      })
+    },
     refresh (key) {
-      var url = 'r/search/?keywords=' + key
-      var str = '.image-link img'
-      this.getData(url, str)
+      this.$router.push({
+        path: `/s/${key}`
+      })
+      // this.getData(url, str)
     },
     searchToggle (obj, evt) {
       obj = evt.target
@@ -111,12 +144,20 @@ export default {
       // return (input === undefined ? '' : input).substr(0, 10)
       return input.length > 10 ? input.substr(0, 5) + '...' : input
     }
+  },
+  watch: {
+    '$route' (to, from) {
+      this.$router.go(0)
+    }
   }
 }
 </script>
 <style lang="less">
   .container{
-    padding: calc(3vh);
+    padding: calc(1.5vh);
+  }
+  .ranks > a{
+    padding: calc(0.5vw);
   }
   .titles{
     float: left;
@@ -135,12 +176,12 @@ export default {
   .link{
     color: whitesmoke;
   }
-  .span{
-    font-size: 24px;
+  .span, a{
+    font-size: 20px;
     text-decoration: none;
   }
   a:link { text-decoration: none; color: rgb(233, 224, 231)}
   a:active { text-decoration:blink}
   a:hover { text-decoration:none; color: red}
-  a:visited { text-decoration: none;color: rgb(202, 167, 52)}
+  a:visited { text-decoration: none;color: rgb(67, 84, 165)}
 </style>

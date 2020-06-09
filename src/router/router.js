@@ -7,6 +7,16 @@ export default [
     component: Home
   },
   {
+    path: '/s/:keywords',
+    component: () => import('@/views/Main.vue'),
+    props: true
+  },
+  {
+    path: '/k/:rankName',
+    component: () => import('@/views/Main.vue'),
+    props: true
+  },
+  {
     path: '/p/:comicId',
     component: () => import('@/views/Comic.vue'),
     props: true

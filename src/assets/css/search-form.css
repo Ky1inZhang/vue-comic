@@ -6,7 +6,7 @@ body {padding: 0px; margin:0px; background:url(https://tva4.sinaimg.cn/large/c16
     -webkit-transform: translate(-50%, -50%);
     -moz-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    top:15%;
+    top:10%;
     left:50%;
 }
 .search-wrapper.active {
