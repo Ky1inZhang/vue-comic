@@ -4,7 +4,7 @@ import router from './router'
 // import store from './store'
 import Axios from 'axios'
 import CryptoJs from 'crypto-js'
-import '@/assets/css/bootstrap.css'
+// import '@/assets/css/bootstrap.css'
 import 'font-awesome/css/font-awesome.css'
 import VueLazyLoad from 'vue-lazyload'
 Vue.use(VueLazyLoad, {

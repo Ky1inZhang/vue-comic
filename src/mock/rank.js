@@ -1,4 +1,3 @@
-<script>
 const rank = [
   {
     title: '一拳超人',
@@ -54,4 +53,3 @@ const rank = [
 export default {
   rank
 }
-</script>

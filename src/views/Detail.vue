@@ -43,7 +43,7 @@ export default {
     }
   },
   mounted () {
-    const titles = JSON.parse(sessionStorage.getItem('titles'))
+    const titles = JSON.parse(localStorage.getItem('titles'))
     this.pre = `/p/${this.comicId + titles[this.index].pre}/${Number(this.index) - 1}`
     this.next = `/p/${this.comicId + titles[this.index].next}/${Number(this.index) + 1}`
     this.getData()

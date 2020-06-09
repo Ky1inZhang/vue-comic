@@ -76,7 +76,7 @@ export default {
           //
           this.titles = arrays
           // this.$myStore.titles = arrays
-          sessionStorage.setItem('titles', JSON.stringify(arrays))
+          localStorage.setItem('titles', JSON.stringify(arrays))
         })
         .catch(err => {
           console.error(err)

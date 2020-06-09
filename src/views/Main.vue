@@ -37,9 +37,10 @@
 </template>
 <script>
 // import $ from 'jquery'
-import rank from '@/mock/rank'
+import rank from '@/mock'
 import '@/assets/css/search-form.css'
 import cheerio from 'cheerio'
+// import api from '@/api'
 export default {
   name: 'Main',
   data () {
@@ -47,12 +48,14 @@ export default {
       titles: []
     }
   },
-  beforeMount () {
+  created () {
     this.titles = rank.rank
-  },
-  mounted () {
+    // api.getRank().then(res => {}).catch()
     // var url = '/r/rank/'
     // var str = '.li_content_dec a img'
+    // this.getData(url, str)
+  },
+  mounted () {
   },
   methods: {
     getData (url, str) {
