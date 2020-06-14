@@ -42,6 +42,12 @@ export default {
       showFlg: true
     }
   },
+  beforeCreate () {
+    $(window).load(function () {
+      $('body').addClass('loaded')
+      $('#loader-wrapper').remove()
+    })
+  },
   mounted () {
     const titles = JSON.parse(localStorage.getItem('titles'))
     this.pre = `/p/${this.comicId + titles[this.index].pre}/${Number(this.index) - 1}`
@@ -114,12 +120,14 @@ export default {
     font-size: 8em;
     opacity: 0.5;
     padding-top: 200px;
+    height: 100%;
   }
   .fa-chevron-right{
     width: 100%;
     font-size: 8em;
     opacity: 0.5;
     padding-top: 200px;
+    height: 100%;
   }
   .fa-fa-home{
     position: fixed;

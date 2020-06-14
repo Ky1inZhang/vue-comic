@@ -65,6 +65,12 @@ export default {
       type: String
     }
   },
+  beforeCreate () {
+    $(window).load(function () {
+      $('body').addClass('loaded')
+      $('#loader-wrapper').remove()
+    })
+  },
   created () {
     var url = ''
     var str = ''

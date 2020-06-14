@@ -5,9 +5,9 @@ title newCmd
 set batDir=%cd%
 echo ==================batDir:%batDir%==================
 ::ssh  删除远程文件夹
-set pwd=lunchao..
-set host=root@lunc.club
-set port=1103
+set pwd=xxxxx
+set host=root@xxx.com
+set port=22
 set remotePath=/usr/share/nginx/dist
 set projectPath=F:\vue\vue-comic
 ::scp  复制文件夹到远程服务器
@@ -17,8 +17,6 @@ set scpPath=/usr/share/nginx
 
 (echo Set WshShell=WScript.CreateObject("WScript.Shell"^)
 echo WshShell.AppActivate "newCmd"
-echo WScript.Sleep 5000
-echo WshShell.SendKeys "%pwd%{Enter}"
 echo WScript.Sleep 3000
 echo WshShell.SendKeys "%pwd%{Enter}"
 echo WScript.Sleep 3000
@@ -30,7 +28,7 @@ start pw.vbs
 echo ==================Deleting remote folder...==================
 ssh -p %port% %host% rm -rf %remotePath%
 echo ==================Copying to remote folder...==================
-%projectPath:~0,2% &  cd %projectPath%  &  scp -r -P 1103 %fileName% %host%:%scpPath%
+%projectPath:~0,2% &  cd %projectPath%  &  scp -r -P %port% %fileName% %host%:%scpPath%
 echo ==================successed==================
 
 
