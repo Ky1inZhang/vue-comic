@@ -2,6 +2,9 @@
 
   <div id="comic" class="v-cloak">
     <div class="container">
+      <div class="fa-fa-home">
+            <router-link tag="i" to='/' class="fa fa-home" aria-hidden="true" title="首页"></router-link>
+          </div>
       <div class="row">
         <table class="table table-hover table-bordered">
           <caption class="h2 text-warning text-center" style="text-align: center;caption-side: top;">章节目录</caption>
@@ -125,14 +128,31 @@ export default {
     // word-wrap : break-word;
     // width: 16.6%;
 
-    float: left;
-    width: 20%;
-    height: 24px;
-    color: aliceblue;
-    padding: 0 2px;
-    line-height: 30px;
-    overflow: hidden
+  float: left;
+  width: 20%;
+  height: 24px;
+  color: aliceblue;
+  padding: 0 2px;
+  line-height: 30px;
+  overflow: hidden
 
+}
+
+.fa-fa-home{
+  position: fixed;
+  z-index: 99;
+  padding-top: 20px;
+  float: left;
+  left: 20px;
+  font-size: 3em;
+  opacity: 0.5;
+}
+
+.fa:hover{
+  z-index: -1;
+  display: block;
+  opacity: 1;
+  cursor: pointer;
 }
 
 table{
