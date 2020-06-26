@@ -13,8 +13,8 @@
             <button class="btn btn-default" @click="sortDesc($event)">倒序</button>
           </diV>
           <div class="col-md-12">
-            <div class="titles" v-if="titles.length==0" style="width:100%">
-              <span>资源不存在/版权受限</span>
+            <div class="titles" style="width:100%">
+              <div v-text="noresource"></div>
             </div>
             <div class="titles" v-for="(item,index) in titles" :key="index">
               <div v-if="item.title">
@@ -36,7 +36,8 @@ export default {
   data () {
     return {
       titles: [],
-      sort: 'asc'
+      sort: 'asc',
+      noresource: ''
     }
   },
   props: {
@@ -83,6 +84,7 @@ export default {
           this.titles = arrays
           // this.$myStore.titles = arrays
           localStorage.setItem('titles', JSON.stringify(arrays))
+          if (this.titles.length === 0) this.noresource = '资源不存在/版权受限'
         })
         .catch(err => {
           console.error(err)
