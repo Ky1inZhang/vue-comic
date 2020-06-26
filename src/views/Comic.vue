@@ -13,6 +13,9 @@
             <button class="btn btn-default" @click="sortDesc($event)">倒序</button>
           </diV>
           <div class="col-md-12">
+            <div class="titles" v-if="titles.length==0" style="width:100%">
+              <span>资源不存在/版权受限</span>
+            </div>
             <div class="titles" v-for="(item,index) in titles" :key="index">
               <div v-if="item.title">
                 <!-- <router-link  :to='"/p/" + comicId + item.url' :title="item.title">{{item.title | toFixed}}</router-link> -->
