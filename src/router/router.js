@@ -28,6 +28,10 @@ export default [
     props: true
   },
   {
+    path: '/v',
+    component: () => import('@/views/Mp4.vue')
+  },
+  {
     path: '*',
     redirect: {
       name: 'Home'

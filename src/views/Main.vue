@@ -27,6 +27,7 @@
               <router-link class="link"  to='/k/subscribe' title="排行榜">订阅</router-link>
               <router-link class="link"  to='/k/comment' title="排行榜">评论</router-link>
               <router-link class="link"  to='/k/criticism' title="排行榜">吐槽</router-link>
+              <router-link class="link"  to='/v' title="解析">解析</router-link>
             </div>
           </caption>
           <div class="col-md-12">
@@ -160,7 +161,7 @@ export default {
 </script>
 <style lang="less">
   .container{
-    padding: calc(1.5vh);
+    padding: calc(3vh);
   }
   .ranks > a{
     padding: calc(0.5vw);
