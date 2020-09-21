@@ -47,7 +47,7 @@
 </template>
 <script>
 // import $ from 'jquery'
-import rank from '@/mock'
+import rank from '@/mock/rank'
 import '@/assets/css/search-form.css'
 import cheerio from 'cheerio'
 // import api from '@/api'
@@ -161,7 +161,7 @@ export default {
 </script>
 <style lang="less">
   .container{
-    padding: calc(3vh);
+    padding: calc(3.5vh);
   }
   .ranks > a{
     padding: calc(0.5vw);

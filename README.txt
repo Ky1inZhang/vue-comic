@@ -57,3 +57,6 @@ https证书配置
     
 https nginx 配置    
         https://www.cnblogs.com/is-possible/p/12524115.html    
+
+iframe全屏方式引入
+        https://www.softwhy.com/article-8279-1.html
