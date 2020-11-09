@@ -32,6 +32,14 @@ export default [
     component: () => import('@/views/Mp4.vue')
   },
   {
+    path: '/gf',
+    component: () => import('@/views/GF.vue')
+  },
+  {
+    path: '/zujienvyou',
+    component: () => import('@/views/zujienvyou.vue')
+  },
+  {
     path: '*',
     redirect: {
       name: 'Home'

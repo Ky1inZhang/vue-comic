@@ -60,3 +60,12 @@ https nginx 配置
 
 iframe全屏方式引入
         https://www.softwhy.com/article-8279-1.html
+
+动态追加的元素无法用选择器监听到事件,document.addEventListener 监听事件后判断是否直指定元素
+
+div空白问题font-size=0 内部重新赋值
+
+vue iframe通信PostMessage和监听一起使用
+
+前端基本代码
+https://segmentfault.com/a/1190000017875258

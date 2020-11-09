@@ -10,8 +10,26 @@
       <div class="fa-fa-home">
         <router-link tag="i" to="/" class="fa fa-home" aria-hidden="true" title="首页"></router-link>
       </div>
+      <div class="fa-fa-navicon" @click="navicon">
+        <div tag="i"  class="fa fa-navicon" aria-hidden="true" title="目录"></div>
+      </div>
     </div>
-    <img class="noimg" :src="noimg" alt srcset />
+
+    <div class="" id="right_slide" data-pushbar-target="right_slide"></div>
+    <div data-pushbar-id="right_slide" class="pushbar from_right">
+      <div class="title">
+        <p>目录</p>
+        <span class="asc">正序</span>
+      </div>
+      <div id="rightHtml" class="z-index:-1">
+        <div v-for="(item,index) in titles" :key="index">
+          <router-link :to="'/p/'+comicId+item.url+'/'+item.index" aria-hidden="true">{{item.title}}</router-link>
+        </div>
+      </div>
+      <span class="glyphicon glyphicon-remove" aria-hidden="true" data-pushbar-close></span>
+    </div>
+
+    <!-- <img class="noimg" :src="noimg" alt srcset /> -->
     <div class="imgs" v-for="(item,index) in imgs" :key="index">
       <!-- <img class="img-responsive" @click="show()" v-lazy="hostUrl+item" alt /> -->
       <img class="img-responsive" @click="show()" v-lazy="item" alt />
@@ -20,6 +38,8 @@
 </template>
 
 <script>
+import pushbar from '@/assets/js/pushbar.js'
+import '@/assets/css/pushbar.css'
 export default {
   name: 'Detail',
   props: {
@@ -40,7 +60,8 @@ export default {
       noimg: '',
       pre: '',
       next: '',
-      showFlg: true
+      showFlg: true,
+      titles: []
     }
   },
   beforeCreate () {
@@ -51,6 +72,7 @@ export default {
   },
   mounted () {
     const titles = JSON.parse(localStorage.getItem('titles'))
+    this.titles = titles
     this.pre = `/p/${this.comicId + titles[this.index].pre}/${Number(this.index) - 1}`
     this.next = `/p/${this.comicId + titles[this.index].next}/${Number(this.index) + 1}`
     this.getData()
@@ -123,6 +145,9 @@ export default {
     },
     show () {
       this.showFlg = !this.showFlg
+    },
+    navicon () {
+      pushbar.open('right_slide')
     }
   },
   computed: {
@@ -138,10 +163,33 @@ export default {
 <style lang="less" scope="this api replaced by slot-scope in 2.5.0+">
 .fa:hover {
   z-index: -1;
-  display: block;
   opacity: 1;
   cursor: pointer;
 }
+
+button,#rightHtml div span:hover {
+  cursor: pointer;
+  color:rgb(199, 150, 76);
+}
+
+.asc,.desc:hover{
+  cursor: pointer;
+}
+
+#rightHtml {
+  color: whitesmoke;
+  overflow-x: hidden;
+  width: 100%;
+  font-size: 2em;
+  text-align: left;
+  padding-left: 1em;
+}
+
+.title{
+  color: whitesmoke;
+  font-size: 2em;
+}
+
 .fa-chevron-left {
   width: 100%;
   font-size: 8em;
@@ -157,24 +205,39 @@ export default {
   height: 100%;
 }
 .fa-fa-home {
+  // position: fixed;
+  // z-index: 99;
+  // padding-top: 20px;
+  // float: left;
+  // left: 20px;
+  // font-size: 3em;
+  // opacity: 0.5;
   position: fixed;
-  z-index: 99;
-  padding-top: 20px;
-  float: left;
-  left: 20px;
-  font-size: 3em;
+  left: 1vw;
+  font-size: 3rem;
+  opacity: 0.5;
+}
+.fa-fa-navicon {
+  position: fixed;
+  right: 1vmin;
+  padding-right: 1vmax;
+  font-size: 3rem;
   opacity: 0.5;
 }
 .fa-left {
   position: fixed;
   width: 30%;
-  height: calc(100vh);
+  height: 80vh;
+  margin-top: 10vh;
+  padding-left: 5vw;
 }
 .fa-right {
   position: fixed;
   width: 30%;
-  right: 0%;
-  height: calc(100vh);
+  right: 1%;
+  height: 80vh;
+  margin-top: 10vh;
+  padding-right: 5vw;
 }
 // .Detail{
 //   text-align: center;
@@ -184,7 +247,7 @@ export default {
 //   margin: 0 auto;
 // }
 img {
-  width: calc(43.8vw);
+  width: calc(45vw);
   text-align: center;
   // display: inline-block;
   height: auto;

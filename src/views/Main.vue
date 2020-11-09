@@ -28,10 +28,13 @@
               <router-link class="link"  to='/k/comment' title="排行榜">评论</router-link>
               <router-link class="link"  to='/k/criticism' title="排行榜">吐槽</router-link>
               <router-link class="link"  to='/v' title="解析">解析</router-link>
+              <!-- <router-link class="link"  to='/gf' title="租借女友">租借女友</router-link> -->
+              <router-link class="link"  to='/zujienvyou' title="租借女友">租借女友</router-link>
+              <!-- <a @click="zujienvyou" style="cursor: pointer;">租借女友</a> -->
             </div>
           </caption>
           <div class="col-md-12">
-            <ul class="titles" v-for="(item,index) in titles" :key="index">
+            <ul class="titles col-sm-4 col-6" v-for="(item,index) in titles" :key="index">
               <div v-if="item.title">
                 <router-link class="link"  :to='"/p" + item.url' :title="item.title">
                   <img class="jpg" :src="item.jpg">
@@ -92,6 +95,9 @@ export default {
   mounted () {
   },
   methods: {
+    zujienvyou () {
+      window.location.href = '/static/zujienvyou/zujienvyou.html'
+    },
     getData (url, str) {
       this.$axios
         .get(url, {
@@ -149,7 +155,7 @@ export default {
   filters: {
     toFixed (input) {
       // return (input === undefined ? '' : input).substr(0, 10)
-      return input.length > 10 ? input.substr(0, 5) + '...' : input
+      return input.length > 10 ? input.substr(0, 10) + '...' : input
     }
   },
   watch: {
@@ -184,7 +190,7 @@ export default {
     color: whitesmoke;
   }
   .span, a{
-    font-size: 20px;
+    font-size:20px;
     text-decoration: none;
   }
   a:link { text-decoration: none; color: rgb(233, 224, 231)}

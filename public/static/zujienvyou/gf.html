@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="referrer" content="never">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<title>租借女友漫画</title>
+		<!-- https://m.hcs68.com/ -->
+	</head>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.0.0/jquery.js"></script>
+	<!-- <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.9.1/axios.js"></script> -->
+	<!-- <script src="https://cdn.bootcdn.net/ajax/libs/cheerio/0.15.0/index.min.js"></script> -->
+	<body>
+		
+		<div id="main">
+			<div class="loading" style="display: none;">
+			    正在努力加载下一章节……
+			</div>
+			<img src="https://res.hcs68.com/image/view/600020/0.webp">
+			<img src="https://res.hcs68.com/image/view/600020/1.webp">
+		</div>
+		<script>
+			var a = [600020,600021,1126859,1126860,1126861,1126862,1126863,1126864,1126865,1126866,1126867,1126868,1126869,1126870,1126871,1126872,1126873,1126874,1126875,1126876,1126877,1126878,1126879,1126880,1126881,1126882,1126883,1126884,1126885,1126886,1126887,1126888,1126889,1126890,1126891,1126892,1126893,1126894,1126895,1126896,1126897,1126898,1126899,1126900,1126901,1126902,1126903,1126904,1126905,1126906,1126907,1126908,1126909,1126910,1126911,1126912,1126913,1126914,1126915,1126916,1126917,1126918,1126919,1126920,1126921,1126922,1126923,1126924,1126925,1126926,1126927,1126928,1126929,1126930,1126931,1126932,1126933,1126934,1126935,1126936,1126937,1126938,1126939,1126940,1126941,1126942,1126943,1126944,1126945,1126946,1126947,1126948,1126949,1126950,1126951,1126952,1126953,1126954,1126955,1126956,1126957,1126958,1126959,1126960,1126961,1126962,1126963,1126964,1126965,1126966,1126967,1126968,1126969,1126970,1126971,1126972,1126973,1126974,1126975,1126976,1126977,1126978,1126979,1126980,1126981,1126982,1126983,1126984,1126985,1126986,1126987,1126988,1126989,1126990,1126991,1126992,1126993,1126994,1126995,1126996,1126997,1126998,1126999,1221056,1233587,1246350,1276424,1276425,1305084,1320983,1333419,1355185,1371882,1402116,1410194,1417093,1433209,1445955,1457653,1463024,1470545,1478643]
+			var b = 0 // a下标
+			var c = 50 // 页数
+			document.querySelector("img").onload = function() {
+				console.log("加载完毕")
+			}
+			$(window).scroll(
+				// https://blog.csdn.net/sinat_29325027/article/details/53405691
+				// https://blog.csdn.net/weixin_30367945/article/details/99977750
+				function() {
+					var scrollTop = $(this).scrollTop() + 1;
+					var scrollHeight = $(document).height();
+					var windowHeight = $(window).height();
+					if (scrollTop + windowHeight >= scrollHeight - 50) {
+						// 此处是滚动条到底部时候触发的事件，在这里写要加载的数据，或者是拉动滚动条的操作
+						getNext()
+					}
+				});
+			function getNext(){
+				var d = document.createElement('div');
+				//判断是否有资源
+				// $.get(`https://res.hcs68.com/image/view/${a[b]}/${++c}.webp`,
+				// 	function(data,status){
+				// 	  console.log(status)
+				// 	  if(status == 'success') {
+				// 		  d.innerHTML = `<img src="https://res.hcs68.com/image/view/${a[b]}/${c}.webp">`
+				// 		  console.log(a[b]+'---'+ c + '---success')
+				// 		  return 0;
+				// 	  }
+				// 	},);
+				d.innerHTML = `<img src="https://res.hcs68.com/image/view/${a[b]}/${++c}.webp">`
+				console.log(a[b]+'---'+ c + '---success')
+				document.body.appendChild(d);
+			};
+			
+			document.addEventListener("error", function(e){
+			var elem = e.target;
+			if(elem.tagName.toLowerCase() === 'img'){
+				elem.parentNode.removeChild(elem);
+				$('.loading').show();
+				$('.loading').delay(3000).hide(0);
+				b++;
+				c=-1;
+				
+			}
+			}, true /*指定事件处理函数在捕获阶段执行*/);
+			
+			//节流函数  貌似无效 待测试
+			// function throttle(fn,wait){
+			//     var timer = null;
+			//     return function(){
+			//         var context = this;
+			//         var args = arguments;
+			//         if(!timer){
+			//             timer = setTimeout(function(){
+			//                 fn.apply(context,args);
+			//                 timer = null;
+			//             },wait)
+			//         }
+			//     }
+			// }
+			
+			$.get(`https://m.hcs68.com/manhua/zujienvyou/`,
+				function(data,status){
+					console.log(status)
+				  // var chapter = data.match(new RegExp('[1-9]\\d*(?=.html)|(?<=an>).*?(?=</sp)','g'))
+				  var chapter = data.match(new RegExp('[1-9]\\d*(?=.html)|(?<=an>).*?(?=</sp)','g'))
+					  //去重 截取 反转
+				  a = Array.from(new Set(chapter)).reverse()
+				  console.log(a.toString())
+				  var html = ''
+				  for(var item in a){
+					  if(item%2 == 0){
+						html += '"'+ a[item]+'",'
+					  }
+				  }
+				  console.log(html)
+				  if(status == 'success') {
+				  }
+				},);
+		</script>
+	</body>
+	<style type="text/css">
+		img {
+			text-align: center;
+			height: auto;
+			max-width: 100%;
+		}
+		.loading { 
+		  width: 50%;
+		  margin: auto;
+		  position: fixed;
+		  top: 50%; left: 50%;
+		  -webkit-transform: translate(-50%,-50%);
+		      -ms-transform: translate(-50%,-50%);
+		          transform: translate(-50%,-50%);
+		}
+	</style>
+</html>
