@@ -176,14 +176,14 @@ export default {
     float: left;
     width: 50%;
     height: 180px;
-    padding: 0 2px;
+    padding: 0 0px;
     line-height: 30px;
     overflow: hidden
   }
   .jpg{
     left: 0%;
     float: left;
-    width: auto;
+    width: 135px;
     height: 180px;
   }
   .link{
@@ -193,6 +193,13 @@ export default {
     font-size:20px;
     text-decoration: none;
   }
+  @media screen and (max-width: 500px) {
+  .span{
+    left: 135px;
+    width: 20px;
+    position: absolute;
+  }
+}
   a:link { text-decoration: none; color: rgb(233, 224, 231)}
   a:active { text-decoration:blink}
   a:hover { text-decoration:none; color: red}
