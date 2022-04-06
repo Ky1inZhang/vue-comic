@@ -83,24 +83,28 @@
 			//         }
 			//     }
 			// }
-			
-			$.get(`https://m.hcs68.com/manhua/zujienvyou/`,
+			 
+			// $.get(`https://m.hcs68.com/manhua/zujienvyou/`,
+			$.get(`https://www.anray.org/index.php/archives/40/`, //美女
 				function(data,status){
 					console.log(status)
 				  // var chapter = data.match(new RegExp('[1-9]\\d*(?=.html)|(?<=an>).*?(?=</sp)','g'))
-				  var chapter = data.match(new RegExp('[1-9]\\d*(?=.html)|(?<=an>).*?(?=</sp)','g'))
+				  var chapter = data.match(new RegExp('(?<=data-original=").*?(?<=.jpg)','g'))
 					  //去重 截取 反转
 				  a = Array.from(new Set(chapter)).reverse()
-				  console.log(a.toString())
+				  // console.log(a.toString())
 				  var html = ''
 				  for(var item in a){
 					  if(item%2 == 0){
-						html += '"'+ a[item]+'",'
+						// html += '"'+ a[item]+'",'
+						html += `<img src=${a[item]}>`
 					  }
 				  }
 				  console.log(html)
 				  if(status == 'success') {
 				  }
+				  var dd = document.createElement('div');
+				  dd.innerHTML = html
 				},);
 		</script>
 	</body>
