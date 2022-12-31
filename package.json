@@ -21,11 +21,11 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^3.1.47",
-    "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-babel": "~5.0.8",
+    "@vue/cli-plugin-eslint": "~5.0.8",
     "@vue/cli-plugin-router": "~4.4.0",
     "@vue/cli-plugin-vuex": "~4.4.0",
-    "@vue/cli-service": "~4.4.0",
+    "@vue/cli-service": "~5.0.8",
     "@vue/eslint-config-standard": "^5.1.2",
     "babel-eslint": "^10.1.0",
     "compression-webpack-plugin": "^4.0.0",
@@ -36,9 +36,9 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "less": "^3.0.4",
-    "less-loader": "^5.0.0",
+    "less-loader": "^11.1.0",
     "mockjs": "^1.1.0",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.43.0"
+    "webpack": "^5.75.0"
   }
 }
